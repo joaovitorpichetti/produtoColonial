@@ -1,0 +1,36 @@
+{% extends 'menu.html' %}
+
+{% block conteudo %}
+
+        {% if produtos %} <!-- produtos {vem no arquivo views}-->
+
+        <h1>Lista de Produtos</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for produto in produtos %}
+            <tr>
+                <th scope="row">{{ produto.id }}</th>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.preco }}</td>
+                <td>
+
+                </td>
+            </tr>
+          {% endfor %}
+
+          </tbody>
+        </table>
+        {% else %}
+            <h2>Não foi encontrado produtos cadastrados</h2>
+        {% endif %}
+
+{% endblock %}

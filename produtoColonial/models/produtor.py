@@ -13,7 +13,7 @@ class Produtor(BaseModel):
     cep = models.CharField(max_length=15, verbose_name="CEP", help_text="Informe o CEP do endereço do Cliente")
     endereco = models.CharField(max_length=150, verbose_name="Endereço", help_text="Informe a Rua, Número da casa, Bairro e Cidade")
     plano = models.ForeignKey(Plano, on_delete=models.CASCADE, verbose_name="Plano", help_text="Selecione o plano que o produtor vai adiquirir, lembrando que os pagamentos são mensais")
-    observacoes = models.TextField(max_length=500, verbose_name="Observações", help_text="Utilize esse campo caso queira adicionar alguma observação")
+    observacoes = models.TextField(max_length=500, blank=True, verbose_name="Observações", help_text="Utilize esse campo caso queira adicionar alguma observação")
 
     class Meta:
         abstract = False
