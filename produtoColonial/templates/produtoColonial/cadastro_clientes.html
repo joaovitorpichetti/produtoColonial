@@ -1,0 +1,52 @@
+{% extends "menu.html" %}
+{% load widget_tweaks %}
+{% block conteudo %}
+
+    <div class="container text-center">
+        <br>
+        <h1>Cadastro de Clientes</h1>
+        <br>
+        <form action="{% url "aplicacao:cadastro_cliente" %}" method="post" class="row g-3">
+            {% csrf_token %}
+
+            <div class="row g-2">
+                <div class="col">
+                    {% render_field form.first_name|add_class:"form-control" placeholder="Nome" %} <!-- Aqui criamos o campo nome e colocamos as formatações -->
+                </div>
+                <div class="col">
+                    {% render_field form.last_name|add_class:"form-control" placeholder="Sobrenome" %}
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                {% render_field form.cep|add_class:"form-control" placeholder="CEP" %}
+            </div>
+
+            <div class="col-md-5">
+                {% render_field form.endereco|add_class:"form-control" placeholder="Endereço" %}
+            </div>
+
+            <div class="col-md-3">
+                {% render_field form.celular|add_class:"form-control" placeholder="Celular" type="tel" %}
+            </div>
+
+            <div class="col-md-4">
+                {% render_field form.cpf|add_class:"form-control" placeholder="CPF" %}
+            </div>
+
+            <div class="col-md-4">
+                {% render_field form.email|add_class:"form-control" placeholder="E-mail" %}
+            </div>
+
+            <div class="col-md-4">
+                {% render_field form.password|add_class:"form-control" placeholder="Senha" %}
+            </div>
+
+            <div style="text-align: right">
+                <button type="submit" class="btn btn-success"><i class="bi bi-person-fill-add"></i> Registrar</button>
+            </div>
+
+        </form>
+    <br>
+    </div>
+{% endblock %}
