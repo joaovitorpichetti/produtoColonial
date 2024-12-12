@@ -11,10 +11,10 @@
 
             <div class="row g-2">
                 <div class="col">
-                    {% render_field form.first_name|add_class:"form-control" placeholder="Nome" %} <!-- Aqui criamos o campo nome e colocamos as formatações -->
+                    {% render_field form.first_name|add_class:"form-control" placeholder="Nome" type="text" %} <!-- Aqui criamos o campo nome e colocamos as formatações -->
                 </div>
                 <div class="col">
-                    {% render_field form.last_name|add_class:"form-control" placeholder="Sobrenome" %}
+                    {% render_field form.last_name|add_class:"form-control" placeholder="Sobrenome" type="text" %}
                 </div>
             </div>
 
@@ -35,11 +35,11 @@
             </div>
 
             <div class="col-md-4">
-                {% render_field form.email|add_class:"form-control" placeholder="E-mail" %}
+                {% render_field form.email|add_class:"form-control" placeholder="E-mail" type="email" %}
             </div>
 
             <div class="col-md-4">
-                {% render_field form.password|add_class:"form-control" placeholder="Senha" %}
+                {% render_field form.password|add_class:"form-control" placeholder="Senha" type="password" %}
             </div>
 
             <div style="text-align: right">

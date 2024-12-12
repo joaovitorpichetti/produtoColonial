@@ -1,38 +1,53 @@
 {% extends 'menu.html' %}
+{% load widget_tweaks %}
 {% block conteudo %}
-
-    <h1>Login</h1>
     
     {% if form.errors %}
-    <p>Seu nome de usuário e senha não correspondem. Por favor, tente novamente.</p>
-  {% endif %}
-
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Sua conta não tem acesso a esta página. Para prosseguir,
-      Faça login com uma conta que tenha acesso.</p>
-    {% else %}
-      <p>Por favor, faça o login para ver esta página.</p>
+        <div class="m-3 text-center">
+            <div class="alert alert-danger" role="alert">
+              Seu e-mail ou senha não correspondem. Por favor, tente novamente.
+            </div>
+        </div>
     {% endif %}
-  {% endif %}
 
-  <form method="post" action="{% url 'login' %}">
+    {% if next %}
+        {% if user.is_authenticated %}
+          <p>Sua conta não tem acesso a esta página. Para prosseguir,
+          Faça login com uma conta que tenha acesso.</p>
+        {% else %}
+          <p>Por favor, faça o login para ver esta página.</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
-
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Perdeu a senha?</a></p>
+        
+        <div class="container text-center position-absolute top-50 start-50 translate-middle">
+            <div class="row align-items-center">
+                <br>
+                <h1>Login</h1>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-4 p-2">
+                        {% render_field form.username|add_class:"form-control" placeholder="E-mail" type="email" %}
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col-4 p-2">
+                        {% render_field form.password|add_class:"form-control" placeholder="Senha" type="password" %}
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                <div class="col-4 p-1">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    
+                    <p class="p-2"><a href="{% url 'password_reset' %}">Perdeu a senha?</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
 
 {% endblock conteudo%}

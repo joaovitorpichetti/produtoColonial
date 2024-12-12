@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 class ClienteForm(forms.ModelForm):
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput())
+    #email = forms.EmailField()
+    #password = forms.CharField(widget=forms.PasswordInput())
     cpf = forms.CharField(max_length=11)
     celular = forms.CharField(max_length=11)
     cep = forms.CharField(max_length=15)

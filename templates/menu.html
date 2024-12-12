@@ -4,24 +4,24 @@
     
     <nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- Padrão: navbar navbar-expand-lg bg-body-tertiary  style="background-color: #88bdb1;-->
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'inicio' %}"><img src="https://i.ibb.co/Df7FzBm/logoOK.png" alt="Logo" height="50"></a>
+            <a class="navbar-brand" href="{% url 'inicio' %}"><img src="https://i.ibb.co/SQn201D/LogoOK.png" alt="Logo" height="50"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <!--<li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>-->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}"><i class="bi bi-house"></i> Início</a>
+            </li>
           
             {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Produtos
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="bi bi-box-seam"></i> Produtos
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'aplicacao:produtos_lista' %}">Lista de Produtos</a></li>
-                <li><a class="dropdown-item" href="#">Adicionar Produto</a></li>
+                <li><a class="dropdown-item" href="{% url 'aplicacao:produtos_lista' %}"><i class="bi bi-list-check"></i> Lista de Produtos</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle"></i> Adicionar Produto</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
@@ -31,14 +31,14 @@
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
-            <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav-link btn btn-outline-danger">Sair</a>
+            <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav-link active"><i class="bi bi-door-open"></i> Sair</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'aplicacao:cadastro_cliente' %}">Cadastre-se</a>
+              <a class="nav-link active" href="{% url 'aplicacao:cadastro_cliente' %}"><i class="bi bi-person-add"></i> Cadastre-se</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-link active" href="{% url 'login' %}"><i class="bi bi-person"></i> Login</a>
             </li>
             {% endif %}
           </ul>

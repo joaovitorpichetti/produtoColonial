@@ -2,42 +2,15 @@
 
 {% block rodape %}
     
-    <div class="row align-items-end">
+    <footer class="card-footer text-body-secondary"> <!-- Para deixar sempre fixo no fim da PG testar: position-absolute bottom-0 end-0 -->
         <div class="col">
         <div class="card text-center">
           <div class="card-footer text-body-secondary">
-            Desenvolvido por WeTech Solutions 2024
+              <div class="text-center" style="padding: 5px;" >
+                  &copy 2024 Copyright: <a href="#">WeTech Solutions</a>
+              </div>
           </div>
         </div>
-    </div>
-    
-    <footer class="bg-dark text-light"> <!-- Para deixar sempre fixo no fim da PG testar: position-absolute bottom-0 end-0 -->
-    <div class="container-fluid py-3">
-    <div class="row">
-      <div class="col-4">
-        <ul class="nav flex-column">
-          <li class="nav-link"><a href="#">Retornar à Loja</a></li>
-          <li class="nav-link"><a href="#">Sobre</a></li>
-          <li class="nav-link"><a href="#">Contato</a></li>
-          <li class="nav-link"><a href="#">Suporte</a></li>
-        </ul>
-      </div>
-      <div class="col-8">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem sed necessitatibus id asperiores iste fugiat,             praesentium obcaecati explicabo consequatur voluptatem eos earum blanditiis dolorem eaque veritatis libero?               Magni, nam fugiat.
-        </p>
-        <ul class="nav">
-          <li class="nav-link" ><i class="fab fa-facebook fa-3x "></i></li>
-          <li class="nav-link"><i class="fab fa-instagram fa-3x"></i></li>
-          <li class="nav-link"><i class="fab fa-twitter fa-3x"></i></li>
-          <li class="nav-link"><i class="fab fa-whatsapp fa-3x"></i></li>
-        </ul>
-      </div>
-    </div>
-    </div>
-    <div class="text-center" style="background-color: #333; padding: 20px;" >
-      &copy 2024 Copyright: <a href="#">WeTech Solutions</a>
-    </div>
-  </footer>
+    </footer>
 
 {% endblock %}
