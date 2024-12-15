@@ -1,10 +1,12 @@
 {% extends 'rodape.html' %}
 
 {% block menu %}
-    
+    {% load static %}
     <nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- Padrão: navbar navbar-expand-lg bg-body-tertiary  style="background-color: #88bdb1;-->
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'inicio' %}"><img src="https://i.ibb.co/SQn201D/LogoOK.png" alt="Logo" height="50"></a>
+            <a class="navbar-brand" href="{% url 'inicio' %}">
+                <img src="{% static 'img/LogoOK.png' %}" alt="Logo" height="50">
+            </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,7 +23,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{% url 'aplicacao:produtos_lista' %}"><i class="bi bi-list-check"></i> Lista de Produtos</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-plus-circle"></i> Adicionar Produto</a></li>
+                <li><a class="dropdown-item" href="{% url 'aplicacao:produto_criar' %}"><i class="bi bi-plus-circle"></i> Adicionar Produto</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>

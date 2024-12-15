@@ -8,7 +8,7 @@
                     <h1 class="p-3">Lista de Produtos</h1>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a class="btn btn-success" href="#" role="button">
+                        <a class="btn btn-success" href="{% url 'aplicacao:produto_criar' %}" role="button">
                           <span class="text-light text-center">
                               <i class="bi bi-plus-circle"></i> Cadastrar
                           </span>
@@ -32,20 +32,20 @@
                             <td>{{ produto.categoria.all|join:", "  }}</td>
                             <td>{{ produto.preco }}</td>
                             <td>
-                                <a class="btn btn-primary" href="#" role="button">
+                                <a class="btn btn-primary" href="{% url 'aplicacao:produto_ver' produto.id %}" role="button">
                                 <span class="text-light text-center">
                                     <i class="bi bi-eye-fill"></i>
                                 </span>
 
                                 </a>
 
-                                <a class="btn btn-warning" href="#" role="button">
+                                <a class="btn btn-warning" href="{% url 'aplicacao:produto_atualizar' produto.id %}" role="button">
                                     <span class="text-light text-center">
                                         <i class="bi bi-pencil-fill"></i>
                                     </span>
                                 </a>
 
-                                <a class="btn btn-danger" href="#" role="button">
+                                <a class="btn btn-danger" href="{% url 'aplicacao:produto_excluir' produto.id %}" role="button">
                                     <span class="text-light text-center">
                                         <i class="bi bi-trash-fill"></i>
                                     </span>
