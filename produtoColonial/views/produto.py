@@ -23,13 +23,13 @@ def atualizar(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     try:
         if request.method == "POST":
-            form = ProdutoForm(request.POST, instance=produto)
+            form = ProdutoForm(request.POST, instance=produto, user=request.user)
             if form.is_valid():
                 form.save()
                 # TODO: message
                 return redirect('aplicacao:produtos_lista')
         else:
-            form = ProdutoForm(instance=produto)
+            form = ProdutoForm(instance=produto, user=request.user)
             context = {
                 "form": form,
                 "produto_id": produto_id
@@ -41,12 +41,12 @@ def atualizar(request, produto_id):
 
 def criar(request):
     if request.method == "POST":
-        form = ProdutoForm(request.POST)
+        form = ProdutoForm(request.POST, user=request.user)
         if form.is_valid():
             form.save()
             return redirect("aplicacao:produtos_lista")
     else:
-        form = ProdutoForm()
+        form = ProdutoForm(user=request.user)
 
     context = {
         "form": form
