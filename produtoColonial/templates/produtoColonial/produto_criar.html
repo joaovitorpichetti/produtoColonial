@@ -4,7 +4,7 @@
     <br>
     <h1>Cadastrar Produto</h1>
 
-    <form action="{% url 'aplicacao:produto_criar' %}" method="post">
+    <form action="{% url 'aplicacao:produto_criar' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="container text-center p-3">
