@@ -57,7 +57,20 @@
                       </tbody>
                     </table>
             {% else %}
-                <h2>Não foi encontrado produtos cadastrados</h2>
+            <div class="container text-center">
+                <div class="col">
+                    <br>
+                    <h2>Não foi encontrado produtos cadastrados</h2>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-cet">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-edn">
+                        <a class="btn btn-success" href="{% url 'aplicacao:produto_criar' %}" role="button">
+                            <span class="text-light text-center">
+                                <i class="bi bi-plus-circle"></i> Cadastrar Produto
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
             {% endif %}
                 </div>
             </div>
