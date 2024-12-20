@@ -12,10 +12,18 @@
 
     {% if next %}
         {% if user.is_authenticated %}
-          <p>Sua conta não tem acesso a esta página. Para prosseguir,
-          Faça login com uma conta que tenha acesso.</p>
+            <div class="m-3 text-center">
+                <div class="alert alert-primary" role="alert">
+                  Sua conta não tem acesso a esta página. Para prosseguir,
+                  Faça login com uma conta que tenha acesso.
+                </div>
+            </div>
         {% else %}
-          <p>Por favor, faça o login para ver esta página.</p>
+            <div class="m-3 text-center">
+                <div class="alert alert-warning" role="alert">
+                  Por favor, faça o login para ver esta página.
+                </div>
+            </div>
         {% endif %}
     {% endif %}
 
