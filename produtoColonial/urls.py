@@ -10,5 +10,6 @@ urlpatterns = [
     path('produto/excluir/<int:produto_id>', views.excluir, name='produto_excluir'),
     path('produto/criar', views.criar, name='produto_criar'),
     path('cadastro/cliente', views.cadastro, name='cadastro_cliente'),
+    path('pedidos/', views.pedidos, name='pedidos'),
 ]
 
