@@ -18,4 +18,4 @@ class Pedido(BaseModel):
         abstract = False
 
     def __str__(self):
-        return self.cliente.nome + " (Status: " + self.status + " )"
+        return self.cliente.user.get_full_name() + " (Status: " + self.status + " )"
