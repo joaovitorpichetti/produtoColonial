@@ -1,0 +1,9 @@
+{% extends 'menu.html' %}
+{% block conteudo %}
+    <h1>Pedidos</h1>
+    <div class="col-12">
+        {% for x in pedidos %}
+            {{ x.id }}
+        {% endfor %}
+    </div>
+{% endblock %}
