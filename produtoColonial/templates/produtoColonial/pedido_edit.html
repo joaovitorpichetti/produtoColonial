@@ -1,0 +1,30 @@
+{% extends 'menu.html' %}
+
+{% block conteudo %}
+     <h1>Edição de Produto</h1>
+
+    <form action="{% url 'aplicacao:pedido_editar' produto_id %}" method="post">
+        {% csrf_token %}
+        <div class="col-12">
+            {{ form.as_table }}
+
+        </div>
+
+        <div style="text-align: right">
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-floppy"></i> Salvar
+            </button>
+
+            <button type="reset" class="btn btn-danger">
+                <i class="bi bi-x-circle"></i> Repor
+            </button>
+
+            <a class="btn btn-primary" href="{% url 'aplicacao:produtos_lista' %}" role="button">
+                <span class="text-light text-center">
+                    <i class="bi bi-arrow-counterclockwise"></i> Voltar
+                </span>
+            </a>
+        </div>
+    </form>
+
+{% endblock %}
