@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+
+from produtoColonial.decorators import produtor_only
 from produtoColonial.models.produto import Produto
 from produtoColonial.forms.produto_form import ProdutoForm
 from django.contrib.auth.decorators import login_required
@@ -11,7 +13,7 @@ def lista(request):
     }
 
     return render(request, "produtoColonial/produtos_lista.html", conteudo)
-
+@login_required
 def ver(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     conteudo = {
@@ -19,6 +21,7 @@ def ver(request, produto_id):
     }
     return render(request, 'produtoColonial/produto_ver.html', conteudo)
 
+@produtor_only
 def atualizar(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     try:
@@ -39,6 +42,7 @@ def atualizar(request, produto_id):
         # TODO: message
         return redirect(request, 'produtoColonial/produtos_lista.html')
 
+@produtor_only
 def criar(request):
     if request.method == "POST":
         form = ProdutoForm(request.POST, request.FILES, user=request.user)
@@ -52,7 +56,7 @@ def criar(request):
         "form": form
     }
     return render(request, "produtoColonial/produto_criar.html", context)
-
+@produtor_only
 def excluir(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     try:

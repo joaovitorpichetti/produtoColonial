@@ -1,6 +1,14 @@
 {% extends 'menu.html' %}
 
 {% block conteudo %}
+    {% if messages %}
+    <ul class="list-unstyled">
+        {% for message in messages %}
+            <li{% if message.tags %} class="alert alert-danger"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
 
     <div class="jumbotron">
         {% if user.is_authenticated %}
