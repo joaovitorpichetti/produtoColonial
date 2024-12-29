@@ -188,7 +188,7 @@ JAZZMIN_SETTINGS = {
         {"name": "Início",  "url": "admin:index", "permissions": ["auth.view_user"]},
 
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        #{"model": "auth.User"}, #aqui aparece um botão para ver os usuario
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "books"},
