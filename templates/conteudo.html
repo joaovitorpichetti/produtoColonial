@@ -1,25 +1,70 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block conteudo %}
-    {% if messages %}
-    <ul class="list-unstyled">
-        {% for message in messages %}
-            <li{% if message.tags %} class="alert alert-danger"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
 
+    {% include 'carrossel.html' %}
 
-    <div class="jumbotron">
-        {% if user.is_authenticated %}
-            <h1 class="display-4">Olá, {{ user.get_short_name }}!</h1>
-        {% else %}
-        <h1 class="display-4">Olá!</h1>
-        {% endif %}
-      <p class="lead">Essa é uma tela teste com uma mensagem padrão para testes!!!</p>
-      <hr class="my-4">
-      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Saiba mais</a>
+    <br> <br>
+    <div class="container">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-basket2-fill"></i></h1>
+                    <p class="card-text">Produtos artesanais, frescos e cheios de sabor, feitos com o máximo de cuidado e dedicação.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-box2-heart-fill"></i></h1>
+                    <p class="card-text">A melhor qualidade em itens locais, escolhidos com rigor para garantir frescor e excelência.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-chat-left-heart-fill"></i></h1>
+                    <p class="card-text">Feito com carinho, preservando tradições e oferecendo o melhor.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <!-- Configuração responsiva para os cards de imagem -->
+            <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mb-4">
+                <div class="card h-100">
+                    <a href="#">
+                        <img class="card-img destaque" src="{% static 'img/vinho.png' %}" alt="Card image">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mb-4">
+                <div class="card h-100">
+                    <a href="#">
+                        <img class="card-img destaque" src="{% static 'img/queijo.png' %}" alt="Card image">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mb-4">
+                <div class="card h-100">
+                    <a href="#">
+                        <img class="card-img destaque" src="{% static 'img/salame.png' %}" alt="Card image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
 {% endblock %}
