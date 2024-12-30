@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView
 
 from produtoColonial.decorators import produtor_only
+from produtoColonial.models import Categoria
 from produtoColonial.models.produto import Produto
 from produtoColonial.forms.produto_form import ProdutoForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def lista(request):
+def lista_produtor(request):
     produtos = Produto.objects.all()
     conteudo = {
         "produtos": produtos
@@ -40,7 +42,7 @@ def atualizar(request, produto_id):
             return render(request, 'produtoColonial/produto_edit.html', context)
     except:
         # TODO: message
-        return redirect(request, 'produtoColonial/produtos_lista.html')
+        return redirect(request, 'produtoColonial/produtos_lista_produtor.html')
 
 @produtor_only
 def criar(request):
@@ -66,3 +68,26 @@ def excluir(request, produto_id):
         context = {
         }
         return render(request, "produtoColonial/produtos_lista.html", context)
+
+
+class ProdutoListView(ListView):
+    model = Produto
+    template_name = 'produtoColonial/produtos_lista.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categoria_id = self.request.GET.get('c')
+
+        context['categorias'] = Categoria.objects.all()
+
+        print(categoria_id)
+
+        if categoria_id is not None:
+            context['categoria_selecionada'] = Categoria.objects.get(pk=categoria_id)
+            context['produto_list'] = Produto.objects.filter(categoria=categoria_id)
+        else:
+            context['produto_list'] = Produto.objects.all()
+
+        print(context)
+
+        return context
