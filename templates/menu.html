@@ -1,12 +1,9 @@
-{% extends 'rodape.html' %}
-
-{% block menu %}
-    {% load static %}
-    <nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- Padrão: navbar navbar-expand-lg bg-body-tertiary  style="background-color: #88bdb1;-->
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'inicio' %}">
-                <img src="{% static 'img/LogoOK.png' %}" alt="Logo" height="50">
-            </a>
+{% load static %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- Padrão: navbar navbar-expand-lg bg-body-tertiary  style="background-color: #88bdb1;-->
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'inicio' %}">
+            <img src="{% static 'img/LogoOK.png' %}" alt="Logo" height="50">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,27 +14,33 @@
             </li>
           
             {% if user.is_authenticated %}
+                {% if user.produtor %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-box-seam"></i> Produtos
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'aplicacao:produtos_lista' %}"><i class="bi bi-list-check"></i> Lista de Produtos</a></li>
-                        {% if user.produtor %}
                         <li><a class="dropdown-item" href="{% url 'aplicacao:produto_criar' %}"><i class="bi bi-plus-circle"></i> Adicionar Produto</a></li>
-                        {% else %}
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{% url 'aplicacao:pedidos' %}"><i class="bi bi-bag-check"></i> Pedidos</a></li>
-                        {% endif %}
                     </ul>
                 </li>
-            <li class="nav-item">
-            <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-            <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav-link active"><i class="bi bi-door-open"></i> Sair</a>
+                {% endif %}
+                {% if user.is_staff %} <!-- aparece o item só se o User foi membro da equipe ADM -->
+                    <li class="nav-item">
+                      <a class="nav-link active" href="/admin/"><i class="bi bi-wrench-adjustable-circle"></i> Portal Admin</a>
+                    </li>
+                {% endif %}
+                <ul class="navbar-nav">
+            <li class="nav-item ml-auto">
+                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+                <a href="#" onclick="document.getElementById('logout-form').submit();" class="nav-link active"><i class="bi bi-door-open"></i> Sair</a>
             </li>
+                </ul>
             {% else %}
             <li class="nav-item">
               <a class="nav-link active" href="{% url 'aplicacao:cadastro_cliente' %}"><i class="bi bi-person-add"></i> Cadastre-se</a>
@@ -48,7 +51,5 @@
             {% endif %}
           </ul>
         </div>
-      </div>
-    </nav>
-    
-{% endblock %}
+  </div>
+</nav>

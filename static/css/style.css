@@ -1,0 +1,310 @@
+#serra-ecommmerce {
+    width: 10rem;
+    margin-right: 1rem;
+    margin-left: 9rem;
+}
+
+#navbar {
+    margin-right: 4rem;
+}
+
+#iconeconta{
+    font-size: 2.2rem;
+}
+
+#cadastrar {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    width: 9rem;
+    line-height: 0.9rem;
+    margin-left: 0.4rem;
+    cursor: pointer;
+}
+
+#carrinho-compra{
+    cursor: pointer;
+}
+
+#cadastro {
+    margin-left: 0.4rem;
+}
+
+
+#carrinho{
+    font-size: 2.2rem;
+    margin-left: 3rem;
+}
+
+.cor {
+    color: black !important;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.formulario{
+    width: 31rem !important;
+}
+
+.icones {
+    margin-right: 7.2rem;
+}
+
+.icon-txt{
+    text-align-last: center;
+}
+
+.txt{
+    text-align: center;
+}
+
+.destaque {
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.destaque:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-deck .card {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.card-img.destaque {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+}
+
+.card {
+    flex: 1; /* Faz com que os cards ocupem o espaço disponível uniformemente */
+}
+
+.card-img.destaque {
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço do card sem distorcer */
+    height: 100%; /* Faz a imagem ocupar toda a altura do card */
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+}
+
+.icon-txt .card-body {
+    text-align: center;
+}
+
+.row > .col-12 {
+    margin-bottom: 15px; /* Adiciona espaço entre os cards empilhados */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Altura fixa para manter consistência */
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}
+
+.produto-tittle {
+    font-size: 1rem; /* Tamanho do título */
+    margin-bottom: 10px;
+}
+
+.preco {
+    margin: 0;
+    font-size: 1.2rem; /* Tamanho da fonte para o preço */
+}
+
+.btn-block {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem; /* Bordas arredondadas no botão */
+}
+
+.destaque-produto {
+    border-radius: 0.5rem; /* Bordas arredondadas no card */
+    transition: transform 0.2s ease-in-out; /* Animação ao passar o mouse */
+}
+
+.destaque-produto:hover {
+    transform: scale(1.05); /* Efeito de zoom no hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Caixa de Filtros */
+.filter-box {
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    padding: 20px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título dos Filtros */
+.filter-title {
+    color: #4CAF50; /* Verde */
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para o campo de seleção */
+.custom-select {
+    background-color: #FFFFFF; /* Branco para o fundo do select */
+    color: #4CAF50; /* Texto verde */
+    border: 1px solid #8B4513; /* Cor marrom para a borda */
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.custom-select:hover, .custom-select:focus {
+    background-color: #f0f0f0;
+    border-color: #539337; /* Cor verde no foco */
+}
+
+/* Estilo para os campos de input */
+.form-control {
+    background-color: #FFFFFF;
+    color: #4CAF50;
+    border: 1px solid #8B4513;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #f0f0f0;
+    border-color: #539337; /* Cor verde no foco */
+}
+
+/* Botão personalizado */
+.btn-custom {
+    background-color: #4CAF50; /* Fundo verde */
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #3e8e41; /* Verde mais escuro no hover */
+}
+
+/* Padding para o filtro */
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+/* Estilo do botão personalizado */
+
+.btn-custom:hover {
+    background-color: #3e8e41; /* Cor de fundo verde mais escuro ao passar o mouse */
+}
+
+/* Estilo para o botão no modal */
+.btn-custom:focus {
+    outline: none; /* Remove o contorno azul do foco */
+}
+
+
+
+
+/* Caixa de Filtros */
+.filter-box {
+    background-color: #e8f7e8; /* Fundo suave verde claro */
+    padding: 20px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título dos Filtros */
+.filter-title {
+    color: #4CAF50; /* Verde forte */
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo para o campo de seleção */
+.custom-select {
+    background-color: #ffffff; /* Fundo branco */
+    color: #4CAF50; /* Texto verde */
+    border: 2px solid #539337; /* Borda verde */
+    border-radius: 6px;
+    padding-top: 4px; /* Reduz o espaçamento superior */
+    padding-bottom: 4px; /* Reduz o espaçamento inferior */
+    font-size: 1rem;
+    line-height: 1.2; /* Ajusta a altura da linha para melhor alinhamento */
+    transition: all 0.3s ease;
+}
+
+.custom-select:hover, .custom-select:focus {
+    background-color: #f4f4f4; /* Fundo cinza claro no hover */
+    border-color: #8B4513; /* Borda marrom no foco */
+}
+
+/* Estilo para os campos de input */
+.form-control {
+    background-color: #ffffff;
+    color: #4CAF50;
+    border: 2px solid #539337;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #f4f4f4; /* Fundo cinza claro no foco */
+    border-color: #8B4513; /* Borda marrom no foco */
+}
+
+
+
+/* Padding para o filtro */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Adicionar foco no formulário */
+.filter-box:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Aumenta a sombra no hover */
+}
+
+/* Estilo do botão personalizado para manter a consistência de cor */
+.btn-custom {
+    background-color: #539337; /* Cor verde para o botão */
+    color: white; /* Cor do texto em branco */
+    font-size: 0.9rem; /* Tamanho menor do texto */
+    padding: 10px 20px; /* Redução do padding */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-weight: normal; /* Peso de fonte normal */
+    transition: background-color 0.3s ease;
+    text-transform: uppercase; /* Deixar o texto em maiúsculas */
+    width: auto; /* Largura do botão definida automaticamente */
+    max-width: 200px; /* Define um máximo de largura para o botão */
+    margin: 0 auto; /* Centraliza o botão horizontalmente */
+}
+
+.btn-custom:hover {
+    background-color: #3e8e41; /* Cor de fundo verde mais escuro ao passar o mouse */
+}
+
+
+
+
+
+

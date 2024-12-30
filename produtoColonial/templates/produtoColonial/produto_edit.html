@@ -1,13 +1,48 @@
-{% extends 'menu.html' %}
-
+{% extends 'base.html' %}
+{% load widget_tweaks %}
 {% block conteudo %}
 
-    <h1>Edição de Produto</h1>
+    <h1>Edição do Produto</h1>
 
     <form action="{% url 'aplicacao:produto_atualizar' produto_id %}" method="post">
         {% csrf_token %}
-        <div class="col-12">
-            {{ form.as_table }}
+
+        <div class="container text-center p-3">
+             <div class="row g-2 p-2">
+                 <div class="col">
+                     {% render_field form.nome|add_class:"form-control" placeholder="Nome do produto" type="text" %} <!-- Aqui criamos o campo nome e colocamos as formatações -->
+                 </div>
+                 <div class="col">
+                     {% render_field form.imagem|add_class:"form-control" placeholder="Imagem" type="file" %}
+                 </div>
+             </div>
+
+            <div class="row g-2 p-2">
+                <div class="col-6">
+                    <div class="input-group">
+                      <span class="input-group-text">Categoria</span>
+                      {% render_field form.categoria|add_class:"form-select" %}
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="input-group">
+                        <span class="input-group-text">R$:</span>
+                        {% render_field form.preco|add_class:"form-control" type="number" placeholder="Preço" %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row input-group p-2">
+                <div class="col">
+                    <div class="input-group">
+                      <span class="input-group-text">Descição</span>
+                      {% render_field form.descricao|add_class:"form-control" placeholder="Escreva aqui a descrição do seu produto!" %}
+                    </div>
+                </div>
+            </div>
+
+            {% render_field form.produtor|add_class:"form-select" %}
 
         </div>
 
