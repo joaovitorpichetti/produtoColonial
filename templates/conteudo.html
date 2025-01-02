@@ -2,9 +2,54 @@
 {% load static %}
 {% block conteudo %}
 
-    {% include 'carrossel.html' %}
+<!-- Barra de Filtros ARRUMAR -->
+<div class="header-section text-center py-2 bg-light shadow-sm rounded">
+    <h1 class="text-success font-weight-bold display-6 mb-2">Bem-vindo ao nosso catálogo</h1>
+    <p class="text-muted small">Explore produtos incríveis para todas as ocasiões!</p>
+</div>
+<div class="text-center mt-3">
+    <h4 class="mb-2 text-muted">Escolha uma categoria:</h4>
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+        {% for categoria in categorias %}
+            <a href="{% url 'aplicacao:produtos_lista' %}?c={{ categoria.id }}" class="btn {% if categoria.id == categoria_selecionada.id %}btn-success text-white{% else %}btn-outline-success text-dark{% endif %} px-3 py-1 shadow-sm rounded-pill small font-weight-bold">{{ categoria.nome }}</a>
+        {% endfor %}
+    </div>
+</div>
 
-    <br> <br>
+<!-- Carrossel -->
+{% include 'carrossel.html' %}
+
+<!-- Seção de Destaques -->
+<div class="container py-5">
+    <h2 class="text-center text-success mb-4">Destaques da Semana</h2>
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card">
+                <img src="{% static 'img/mel.png' %}" class="card-img-top" alt="Mel Artesanal">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Mel Artesanal</h5>
+                    <p class="card-text">Natural e delicioso, direto do campo para a sua mesa.</p>
+                    <button class="btn btn-custom">Comprar Agora</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card">
+                <img src="{% static 'img/geleia.png' %}" class="card-img-top" alt="Geléia Caseira">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Geléia Caseira</h5>
+                    <p class="card-text">Feita com frutas frescas, perfeita para acompanhar pães e queijos.</p>
+                    <button class="btn btn-custom">Comprar Agora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-outline-info">Ver Todos os Produtos</a>
+    </div>
+</div>
+
+    <br>
     <div class="container">
     <div class="row justify-content-center">
         <!-- Card 1 -->
@@ -21,7 +66,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h1 class="card-title"><i class="bi bi-box2-heart-fill"></i></h1>
-                    <p class="card-text">A melhor qualidade em itens locais, escolhidos com rigor para garantir frescor e excelência.</p>
+                    <p class="card-text">Faça seu pedido e receba os produtos fresquinhos, preparados e enviados diretamente pelo produtor em até uma semana.</p>
                 </div>
             </div>
         </div>
@@ -38,33 +83,29 @@
     </div>
 
 
+<!-- Seção de Sobre -->
+<div id="sobre" class="container py-5 bg-light">
+    <h2 class="text-center text-success mb-4">Sobre Nós</h2>
+    <p class="text-center">Nossa missão é levar até você o melhor da produção colonial: produtos frescos, saudáveis e cheios de tradição. Valorizamos o trabalho artesanal e as famílias que mantêm viva a cultura do campo. Faça seu pedido e receba os produtos diretamente do produtor, preparados e enviados em até uma semana.</p>
+</div>
 
+<!-- Seção de Rodapé -->
+<footer class="bg-dark text-light py-4">
     <div class="container">
         <div class="row">
-            <!-- Configuração responsiva para os cards de imagem -->
-            <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mb-4">
-                <div class="card h-100">
-                    <a href="#">
-                        <img class="card-img destaque" src="{% static 'img/vinho.png' %}" alt="Card image">
-                    </a>
-                </div>
+            <div class="col-md-6">
+                <h5>Contato</h5>
+                <p>Email: contato@serraecommerce.com</p>
+                <p>Telefone: (54) 3232-5555</p>
             </div>
-            <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mb-4">
-                <div class="card h-100">
-                    <a href="#">
-                        <img class="card-img destaque" src="{% static 'img/queijo.png' %}" alt="Card image">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch mb-4">
-                <div class="card h-100">
-                    <a href="#">
-                        <img class="card-img destaque" src="{% static 'img/salame.png' %}" alt="Card image">
-                    </a>
-                </div>
+            <div class="col-md-6 text-end">
+                <h5>Redes Sociais</h5>
+                <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-light me-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-light"><i class="bi bi-whatsapp"></i></a>
             </div>
         </div>
     </div>
+</footer>
 
-    <br><br>
 {% endblock %}
