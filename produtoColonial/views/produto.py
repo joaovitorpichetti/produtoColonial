@@ -14,7 +14,7 @@ def lista_produtor(request):
         "produtos": produtos
     }
 
-    return render(request, "produtoColonial/produtos_lista.html", conteudo)
+    return render(request, "produtoColonial/produtos_lista_produtor.html", conteudo)
 @login_required
 def ver(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
@@ -50,7 +50,7 @@ def criar(request):
         form = ProdutoForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             form.save()
-            return redirect("aplicacao:produtos_lista")
+            return redirect("aplicacao:produtos_lista_produtor")
     else:
         form = ProdutoForm(user=request.user)
 
@@ -63,11 +63,11 @@ def excluir(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     try:
         produto.delete()
-        return redirect('aplicacao:produtos_lista')
+        return redirect('aplicacao:produtos_lista_produtor')
     except:
         context = {
         }
-        return render(request, "produtoColonial/produtos_lista.html", context)
+        return render(request, "produtoColonial/produtos_lista_produtor.html", context)
 
 
 class ProdutoListView(ListView):
