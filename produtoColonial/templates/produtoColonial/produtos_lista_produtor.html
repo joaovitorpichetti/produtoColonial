@@ -33,6 +33,7 @@
                             <td>{{ produto.nome }}</td>
                             <td>{{ produto.categoria.all|join:", "  }}</td>
                             <td>{{ produto.preco }}</td>
+                            {% if user.produtor %}
                             <td>
                                 <a class="btn btn-primary" href="{% url 'aplicacao:produto_ver' produto.id %}" role="button">
                                 <span class="text-light text-center">
@@ -53,6 +54,7 @@
                                     </span>
                                 </a>
                             </td>
+                        {% endif %}
                         </tr>
                       {% endfor %}
 
