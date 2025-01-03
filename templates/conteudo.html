@@ -2,6 +2,11 @@
 {% load static %}
 {% block conteudo %}
 
+    <!-- Carrossel -->
+{% include 'carrossel.html' %}
+
+<br>
+
 <!-- Barra de Filtros ARRUMAR -->
 <div class="header-section text-center py-2 bg-light shadow-sm rounded">
     <h1 class="text-success font-weight-bold display-6 mb-2">Bem-vindo ao nosso catálogo</h1>
@@ -16,8 +21,7 @@
     </div>
 </div>
 
-<!-- Carrossel -->
-{% include 'carrossel.html' %}
+
 
 <!-- Seção de Destaques -->
 <div class="container py-5">
@@ -88,9 +92,9 @@
     <h2 class="text-center text-success mb-4">Sobre Nós</h2>
     <p class="text-center">Nossa missão é levar até você o melhor da produção colonial: produtos frescos, saudáveis e cheios de tradição. Valorizamos o trabalho artesanal e as famílias que mantêm viva a cultura do campo. Faça seu pedido e receba os produtos diretamente do produtor, preparados e enviados em até uma semana.</p>
 </div>
-
+<br>
 <!-- Seção de Rodapé -->
-<footer class="bg-dark text-light py-4">
+<footer style="background-color: #f0f0f0;" class="text-dark py-4">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -100,12 +104,13 @@
             </div>
             <div class="col-md-6 text-end">
                 <h5>Redes Sociais</h5>
-                <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-light me-2"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-light"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="text-dark me-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-dark me-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-dark"><i class="bi bi-whatsapp"></i></a>
             </div>
         </div>
     </div>
 </footer>
+
 
 {% endblock %}
