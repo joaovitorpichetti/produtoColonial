@@ -62,7 +62,10 @@
                         <img src="{{ produto.imagem.url }}" class="card-img-top rounded-top" alt="{{ produto.nome }}">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-success mb-2 text-truncate">{{ produto.nome }}</h5>
-                            <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p>
+                            <!-- Puxando descrição do produto <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p> -->
+                            <!-- descrição padrão -->
+                            <p class="card-text text-muted small mb-2">Para mais informações sobre este item, clique no botão 'Ver Detalhes' abaixo.</p>
+
                             <p class="card-text text-dark font-weight-bold">R$ {{ produto.preco }}</p>
                             <div class="mt-auto text-center">
                                 <a href="#" class="btn btn-success px-3 py-2 rounded">Ver Detalhes</a>
