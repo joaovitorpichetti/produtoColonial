@@ -6,7 +6,6 @@
     {% if categoria_selecionada %}
         <div class="header-section text-center py-2 bg-light shadow-sm rounded">
             <h1 class="text-success font-weight-bold display-6 mb-2">{{ categoria_selecionada }}</h1>
-
     {% else %}
         <div class="header-section text-center py-2 bg-light shadow-sm rounded">
             <h1 class="text-success font-weight-bold display-6 mb-2">Bem-vindo ao nosso catálogo</h1>
@@ -16,17 +15,21 @@
 
     <div class="text-center mt-3">
         <h4 class="mb-2 text-muted">Escolha uma categoria:</h4>
+        <br>
         <div class="d-flex flex-wrap justify-content-center gap-2">
             {% for categoria in categorias %}
                 <a href="{% url 'aplicacao:produtos_lista' %}?c={{ categoria.id }}" class="btn {% if categoria.id == categoria_selecionada.id %}btn-success text-white{% else %}btn-outline-success text-dark{% endif %} px-3 py-1 shadow-sm rounded-pill small font-weight-bold">{{ categoria.nome }}</a>
             {% endfor %}
         </div>
     </div>
+
     <br>
     </div>
     <div class="container mt-4">
+    </div>
+    <!--
         <h3 class="text-success text-center mb-4">Produtos Destaque</h3>
-    <div class="row g-3">
+
         <div id="carrossel-destaques" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {% for produto in produto_list|slice:":0,3" %}
@@ -49,32 +52,32 @@
                 <span class="visually-hidden">Próximo</span>
             </button>
         </div>
+        -->
 
-
-
-            {% if produto_list %}
-                {% for produto in produto_list %}
-                    <div id="produto-{{ forloop.counter }}" class="col-lg-4 col-md-6 col-12">
-                        <div class="card h-100 border shadow-sm bg-beige" style="transition: transform 0.2s;">
-                            <img src="{{ produto.imagem.url }}" class="card-img-top rounded-top" alt="{{ produto.nome }}">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title text-success mb-2 text-truncate">{{ produto.nome }}</h5>
-                                <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p>
-                                <p class="card-text text-dark font-weight-bold">R$ {{ produto.preco }}</p>
-                                <div class="mt-auto text-center">
-                                    <a href="#" class="btn btn-success px-3 py-2 rounded">Ver Detalhes</a>
-                                </div>
+         <div class="row g-3">
+        {% if produto_list %}
+            {% for produto in produto_list %}
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card h-100 border shadow-sm bg-beige" style="transition: transform 0.2s;">
+                        <img src="{{ produto.imagem.url }}" class="card-img-top rounded-top" alt="{{ produto.nome }}">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-success mb-2 text-truncate">{{ produto.nome }}</h5>
+                            <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p>
+                            <p class="card-text text-dark font-weight-bold">R$ {{ produto.preco }}</p>
+                            <div class="mt-auto text-center">
+                                <a href="#" class="btn btn-success px-3 py-2 rounded">Ver Detalhes</a>
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            {% else %}
-                <div class="text-center text-muted py-4">
-                    <p>Nenhum produto encontrado nesta categoria.</p>
                 </div>
-            {% endif %}
-        </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center text-muted py-4">
+                <p>Nenhum produto encontrado nesta categoria.</p>
+            </div>
+        {% endif %}
     </div>
+
 
     <footer class="mt-4 py-2 text-center bg-light">
         <p class="mb-0 text-muted small">© 2024 WeTechSolutions - Todos os direitos reservados.</p>
