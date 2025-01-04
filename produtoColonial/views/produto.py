@@ -8,8 +8,8 @@ from produtoColonial.forms.produto_form import ProdutoForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
-def lista_produtor(request):
-    produtos = Produto.objects.all()
+def lista_produtor(request, ):
+    produtos = Produto.objects.filter(produtor__user=request.user)
     conteudo = {
         "produtos": produtos
     }
