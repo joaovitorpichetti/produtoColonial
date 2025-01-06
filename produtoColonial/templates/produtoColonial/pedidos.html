@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{ pedido.id }}</td>
                             <td>{{ pedido.cliente }}</td>
-                            <td>{{ pedido.status }}</td>
+                            <td>{{ pedido.get_status_display }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{% url 'aplicacao:pedido_ver' pedido.id %}" role="button">
                                 <span class="text-light text-center">
