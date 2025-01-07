@@ -5,6 +5,7 @@ from produtoColonial.models.cliente import Cliente
 from produtoColonial.models.categoria import Categoria
 from produtoColonial.models.produto import Produto
 from produtoColonial.models.pedido import Pedido
+from produtoColonial.models.admin_token import AdminToken
 
 # Register your models here.
 admin.site.register(Plano)
@@ -13,3 +14,4 @@ admin.site.register(Cliente)
 admin.site.register(Categoria)
 admin.site.register(Produto)
 admin.site.register(Pedido)
+admin.site.register(AdminToken)
