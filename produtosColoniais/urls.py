@@ -18,11 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+
+from ninja import NinjaAPI
+from ninja.security import django_auth_superuser
+from produtoColonial.router import router
+
+api = NinjaAPI(auth=django_auth_superuser)
+api.add_router('produtores', router)
+
 urlpatterns = [
     path('', views.index, name='inicio'),
     path('aplicacao/', include('produtoColonial.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('api/', api.urls),
+
 ]
 
 #add essa parte para poder caregar as img como estou na fase de dev.
