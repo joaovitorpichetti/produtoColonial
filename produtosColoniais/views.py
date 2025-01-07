@@ -11,6 +11,9 @@ def index(request):
 
     #conteudo = super().get_context_data(**kwargs)
 
+    produtos_aleatorios = Produto.objects.order_by('?')[:3]
+    conteudo['produtos'] = produtos_aleatorios
+
     conteudo['categorias'] = Categoria.objects.all()
 
     print(categoria_id)
