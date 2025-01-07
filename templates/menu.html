@@ -1,5 +1,6 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary"> <!-- Padrão: navbar navbar-expand-lg bg-body-tertiary  style="background-color: #88bdb1;-->
+
+<!--<nav class="navbar navbar-expand-lg bg-body-tertiary"> Padrão: navbar navbar-expand-lg bg-body-tertiary  style="background-color: #88bdb1;
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'inicio' %}">
             <img src="{% static 'img/LogoOK.png' %}" alt="Logo" height="50">
@@ -27,7 +28,7 @@
                     </ul>
                 </li>
                 {% endif %}
-                {% if user.is_staff %} <!-- aparece o item só se o User foi membro da equipe ADM -->
+                {% if user.is_staff %}
                     <li class="nav-item">
                       <a class="nav-link active" href="/admin/"><i class="bi bi-wrench-adjustable-circle"></i> Portal Admin</a>
                     </li>
@@ -52,10 +53,8 @@
           </ul>
         </div>
   </div>
-</nav>
+</nav> -->
 
-<!-- Fazer um menu teste em baixo, temporario -->
-<br>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <!-- Logo -->
@@ -73,20 +72,39 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- Início -->
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}"><i class="bi bi-house"></i> Início</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}"
+                        style="font-weight: bold; font-size: 1rem; color: gray;">
+                        <i class="bi bi-house" style="font-size: 1.5rem; color: gray;"></i> Início
+                    </a>
                 </li>
 
                 <!-- Produtos (se autenticado como produtor) -->
                 {% if user.is_authenticated and user.produtor %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-box-seam"></i> Produtos
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                        style="font-weight: bold; font-size: 1rem; color: gray;">
+                        <i class="bi bi-box-seam" style="font-size: 1.5rem; color: gray;"></i> Produtos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'aplicacao:produtos_lista_produtor' %}"><i class="bi bi-list-check"></i> Lista de Produtos</a></li>
-                        <li><a class="dropdown-item" href="{% url 'aplicacao:produto_criar' %}"><i class="bi bi-plus-circle"></i> Adicionar Produto</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'aplicacao:produtos_lista_produtor' %}"
+                                style="font-weight: bold; font-size: 1rem; color: gray;">
+                                <i class="bi bi-list-check" style="font-size: 1.5rem; color: gray;"></i> Lista de Produtos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'aplicacao:produto_criar' %}"
+                                style="font-weight: bold; font-size: 1rem; color: gray;">
+                                <i class="bi bi-plus-circle" style="font-size: 1.5rem; color: gray;"></i> Adicionar Produto
+                            </a>
+                        </li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'aplicacao:pedidos' %}"><i class="bi bi-bag-check"></i> Pedidos</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'aplicacao:pedidos' %}"
+                                style="font-weight: bold; font-size: 1rem; color: gray;">
+                                <i class="bi bi-bag-check" style="font-size: 1.5rem; color: gray;"></i> Pedidos
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 {% endif %}
@@ -94,38 +112,48 @@
                 <!-- Portal Admin (se staff) -->
                 {% if user.is_authenticated and user.is_staff %}
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/"><i class="bi bi-wrench-adjustable-circle"></i> Portal Admin</a>
+                    <a class="nav-link active" href="/admin/"
+                        style="font-weight: bold; font-size: 1rem; color: gray;">
+                        <i class="bi bi-wrench-adjustable-circle" style="font-size: 1.5rem; color: gray;"></i> Portal Admin
+                    </a>
                 </li>
                 {% endif %}
-                <!-- Login/Logout -->
+            </ul>
+
+            <!-- Carrinho e Login (ajustados à direita) -->
+            <ul class="navbar-nav" style="margin-right: 2rem;">
+                <!-- Carrinho -->
+                <li class="nav-item">
+                    <a class="nav-link disabled d-flex align-items-center" href="#" tabindex="-1" aria-disabled="true">
+                        <i class="bi bi-cart" style="font-size: 1.5rem; color: gray; margin-right: 0.5rem;"></i>
+                        <span style="font-weight: bold; font-size: 1rem; color: gray;">Carrinho</span>
+                    </a>
+                </li>
+
+                <!-- Login -->
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link active" href="#" onclick="document.getElementById('logout-form').submit();"><i class="bi bi-door-open"></i> Sair</a>
+                    <a class="nav-link d-flex align-items-center" href="#" onclick="document.getElementById('logout-form').submit();"
+                        style="font-weight: bold; font-size: 1rem; color: gray;">
+                        <i class="bi bi-door-open" style="font-size: 1.5rem; color: gray; margin-right: 0.5rem;"></i>
+                        Sair
+                    </a>
                     <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
                         {% csrf_token %}
                     </form>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'aplicacao:cadastro_cliente' %}"><i class="bi bi-person-add"></i> Cadastre-se</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'login' %}"><i class="bi bi-person"></i> Login</a>
-                </li>
-                {% endif %}
-            </ul>
-                
-
-            <!-- Carrinho (ajustado à direita) -->
-            <ul class="navbar-nav" style="margin-right: 2rem;">
-                <li class="nav-item">
-                    <a class="nav-link disabled d-flex align-items-center" href="#" tabindex="-1" aria-disabled="true">
-                        <i class="bi bi-cart" style="font-size: 1.5rem; color: inherit; margin-right: 0.5rem;"></i>
-                        <span style="font-weight: bold; font-size: 1rem; color: inherit;">Carrinho</span>
+                    <a class="nav-link d-flex align-items-center" href="{% url 'login' %}"
+                        style="font-weight: bold; font-size: 1rem; color: gray;">
+                        <i class="bi bi-person" style="font-size: 1.5rem; color: gray; margin-right: 0.5rem;"></i>
+                        Login
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
+
 <br>
