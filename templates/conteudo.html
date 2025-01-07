@@ -29,13 +29,15 @@
     <h2 class="text-center text-success mb-4">Destaques da Semana</h2>
 
 
+       <div class="row">
         {% for produto in produtos %}
         <div class="col-lg-4 col-md-6 col-12">
             <div class="card h-100 border shadow-sm bg-beige" style="transition: transform 0.2s;">
                 <img src="{{ produto.imagem.url }}" class="card-img-top rounded-top" alt="{{ produto.nome }}">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title text-success mb-2 text-truncate">{{ produto.nome }}</h5>
-                    <!-- Puxando descrição do produto <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p> -->
+                    <!-- Puxando descrição do produto -->
+                    <!-- <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p> -->
                     <!-- descrição padrão -->
                     <p class="card-text text-muted small mb-2">Para mais informações sobre este item, clique no botão 'Ver Detalhes' abaixo.</p>
                     <p class="card-text text-dark font-weight-bold">R$ {{ produto.preco }}</p>
@@ -46,87 +48,9 @@
             </div>
         </div>
         {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-                <img src="{% static 'img/mel.png' %}" class="card-img-top" alt="Mel Artesanal">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Mel Artesanal</h5>
-                    <p class="card-text">Natural e delicioso, direto do campo para a sua mesa.</p>
-                    <button class="btn btn-custom">Comprar Agora</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-                <img src="{% static 'img/geleia.png' %}" class="card-img-top" alt="Geléia Caseira">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Geléia Caseira</h5>
-                    <button class="btn btn-custom">Comprar Agora</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-                <img src="{% static 'img/geleia.png' %}" class="card-img-top" alt="Geléia Caseira">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Geléia Caseira PREÇOOOOOO</h5>
-
-                    <button class="btn btn-custom">Ver detalhes</button>
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="text-center mt-4">
-        <a href="{% url 'aplicacao:produtos_lista' %}" class="btn btn-outline-info">Ver Todos os Produtos</a>
-    </div>
-</div>
 
     <br>
-    <div class="container">
-    <div class="row justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h1 class="card-title"><i class="bi bi-basket2-fill"></i></h1>
-                    <p class="card-text">Produtos artesanais, frescos e cheios de sabor, feitos com o máximo de cuidado e dedicação.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h1 class="card-title"><i class="bi bi-box2-heart-fill"></i></h1>
-                    <p class="card-text">Faça seu pedido e receba os produtos fresquinhos, preparados e enviados diretamente pelo produtor em até uma semana.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col-lg-4 col-md-6 col-12 mb-4">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h1 class="card-title"><i class="bi bi-chat-left-heart-fill"></i></h1>
-                    <p class="card-text">Feito com carinho, preservando tradições e oferecendo o melhor.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
 
 <!-- Seção de Sobre -->
 <div id="sobre" class="container py-5 bg-light">
