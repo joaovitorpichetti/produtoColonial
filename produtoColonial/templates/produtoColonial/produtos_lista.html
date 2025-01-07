@@ -6,6 +6,7 @@
     {% if categoria_selecionada %}
         <div class="header-section text-center py-2 bg-light shadow-sm rounded">
             <h1 class="text-success font-weight-bold display-6 mb-2">{{ categoria_selecionada }}</h1>
+        </div>
     {% else %}
         <div class="header-section text-center py-2 bg-light shadow-sm rounded">
             <h1 class="text-success font-weight-bold display-6 mb-2">Bem-vindo ao nosso catálogo</h1>
@@ -55,7 +56,7 @@
         </div>
         -->
 
-         <div class="row g-3">
+    <div class="row g-3">
         {% if produto_list %}
             {% for produto in produto_list %}
                 <div class="col-lg-4 col-md-6 col-12">
