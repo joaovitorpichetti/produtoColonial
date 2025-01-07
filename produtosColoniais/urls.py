@@ -23,8 +23,8 @@ from ninja import NinjaAPI
 from ninja.security import django_auth_superuser
 from produtoColonial.router import router
 
-api = NinjaAPI(auth=django_auth_superuser)
-api.add_router('produtores', router)
+api = NinjaAPI()
+api.add_router(prefix="", router=router)
 
 urlpatterns = [
     path('', views.index, name='inicio'),

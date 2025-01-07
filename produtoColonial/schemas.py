@@ -1,9 +1,13 @@
-from ninja import Schema
+from ninja import ModelSchema
 
-class ProdutorOut(Schema):
-    nomeFantasia: str
-    nome: str
-    documento: str
-    celular: str
-    cep: str
-    endereco: str
+from produtoColonial.models import Produtor, Produto
+
+class ProdutorOut(ModelSchema):
+    class Meta:
+        model = Produtor
+        exclude = ["user", "plano"]
+
+class ProdutoOut(ModelSchema):
+    class Meta:
+        model = Produto
+        exclude = ["produtor"]
