@@ -22,7 +22,7 @@ def get_produtores(request):
 
 
 @router.get("/{produtor_id}/produtos", response=list[ProdutoOut])
-def get_produtos(request, produtor_id: int):
+def get_produtos_by_produtor(request, produtor_id: int):
     produtor = Produtor.objects.get(id=produtor_id)
     return produtor.produto_set.all()
 
