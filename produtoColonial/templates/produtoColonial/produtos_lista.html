@@ -18,11 +18,20 @@
         <h4 class="mb-2 text-muted">Escolha uma categoria:</h4>
         <br>
         <div class="d-flex flex-wrap justify-content-center gap-2">
-            <a href="{% url 'aplicacao:produtos_lista' %}" class="btn btn-outline-success text-dark px-3 py-1 shadow-sm rounded-pill small font-weight-bold">Limpar Filtro</a>
-            {% for categoria in categorias %}
-                <a href="{% url 'aplicacao:produtos_lista' %}?c={{ categoria.id }}" class="btn {% if categoria.id == categoria_selecionada.id %}btn-success text-white{% else %}btn-outline-success text-dark{% endif %} px-3 py-1 shadow-sm rounded-pill small font-weight-bold">{{ categoria.nome }}</a>
-            {% endfor %}
-        </div>
+    <a href="{% url 'aplicacao:produtos_lista' %}"
+       class="btn btn-outline-success px-4 py-2 rounded shadow-sm"
+       style="font-size: 1rem; font-weight: 500; border-width: 2px;">
+        Limpar Filtro
+    </a>
+    {% for categoria in categorias %}
+        <a href="{% url 'aplicacao:produtos_lista' %}?c={{ categoria.id }}"
+           class="btn {% if categoria.id == categoria_selecionada.id %}btn-success text-white{% else %}btn-outline-success{% endif %} px-4 py-2 rounded shadow-sm"
+           style="font-size: 1rem; font-weight: 500; border-width: 2px;">
+            {{ categoria.nome }}
+        </a>
+    {% endfor %}
+    </div>
+
     </div>
 
     <br><br>
