@@ -118,10 +118,29 @@
                     </a>
                 </li>
                 {% endif %}
+
+                <!-- Ver Catálogo Completo -->
+                <li class="nav-item">
+                    <a class="nav-link active d-flex align-items-center" href="{% url 'aplicacao:produtos_lista' %}"
+                        style="font-weight: bold; font-size: 1rem; color: gray;">
+                        <i class="bi bi-card-list" style="font-size: 1.5rem; color: gray; margin-right: 0.5rem;"></i>
+                        Ver Catálogo
+                    </a>
+                </li>
             </ul>
 
+            <!-- Caixa de Pesquisa -->
+            <form class="d-flex" role="search" action="{% url 'aplicacao:produtos_lista' %}" method="GET">
+                <input class="form-control me-2" type="search" name="q" placeholder="Pesquisar produtos..." aria-label="Pesquisar"
+                    style="font-size: 1rem; border: 2px solid gray; border-radius: 5px;">
+                <button class="btn btn-outline-success" type="submit"
+                    style="font-weight: bold; font-size: 1rem; border: 2px solid gray;">
+                    Pesquisar
+                </button>
+            </form>
+
             <!-- Carrinho e Login (ajustados à direita) -->
-            <ul class="navbar-nav" style="margin-right: 2rem;">
+            <ul class="navbar-nav" style="margin-left: 1rem;">
                 <!-- Carrinho -->
                 <li class="nav-item">
                     <a class="nav-link disabled d-flex align-items-center" href="#" tabindex="-1" aria-disabled="true">
