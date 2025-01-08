@@ -46,7 +46,51 @@
             {% endfor %}
         </div>
     </div>
-        <br>
+
+
+   <!-- Botão Ver Catálogo Completo -->
+    <div class="text-center mt-1">
+        <a href="{% url 'aplicacao:produtos_lista' %}"
+           class="btn btn-outline-success px-4 py-2 rounded shadow-sm"
+           style="font-size: 1rem; font-weight: 500; border-width: 2px;">
+            Ver Catálogo Completo
+        </a>
+    </div>
+    <br><br>
+
+    <div class="container">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-basket2-fill"></i></h1>
+                    <p class="card-text">Produtos artesanais, frescos e cheios de sabor, feitos com o máximo de cuidado e dedicação.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-box2-heart-fill"></i></h1>
+                    <p class="card-text">A melhor qualidade em itens locais, escolhidos com rigor para garantir frescor e excelência.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-chat-left-heart-fill"></i></h1>
+                    <p class="card-text">Feito com carinho, preservando tradições e oferecendo o melhor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Seção de Sobre -->
     <div id="sobre" class="container py-5 bg-light">
