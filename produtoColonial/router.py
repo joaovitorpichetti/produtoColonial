@@ -1,9 +1,9 @@
 from ninja import Router
 from ninja.security import HttpBearer
 
-from produtoColonial.models import Produto, Produtor
+from produtoColonial.models import Pedido, Produto, Produtor
 from produtoColonial.models.admin_token import AdminToken
-from produtoColonial.schemas import ProdutoOut, ProdutorOut
+from produtoColonial.schemas import PedidoOut, ProdutoOut, ProdutorOut
 
 class TokenAuth(HttpBearer):
     def authenticate(self, request, token):
@@ -29,6 +29,10 @@ def get_produtos_by_produtor(request, produtor_id: int):
 @router.get("/produtos", response=list[ProdutoOut])
 def get_produtos(request):
     return Produto.objects.all()
+
+@router.get("/{produtor_id}/pedidos", response=list[PedidoOut])
+def get_pedidos_by_produtor(request, produtor_id: int):
+    return Pedido.objects.filter(produtor_id=produtor_id)
 
 @router.get("/validar")
 def validar(request):
