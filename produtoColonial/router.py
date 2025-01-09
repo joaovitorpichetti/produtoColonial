@@ -29,3 +29,7 @@ def get_produtos_by_produtor(request, produtor_id: int):
 @router.get("/produtos", response=list[ProdutoOut])
 def get_produtos(request):
     return Produto.objects.all()
+
+@router.get("/validar")
+def validar(request):
+    return {"valido": True}
