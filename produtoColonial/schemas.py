@@ -1,6 +1,6 @@
-from ninja import ModelSchema
+from ninja import ModelSchema, Schema
 
-from produtoColonial.models import Cliente, Pedido, Produtor, Produto
+from produtoColonial.models import Cliente, Pedido, Plano, Produtor, Produto
 
 class ProdutorOut(ModelSchema):
     class Meta:
@@ -23,3 +23,14 @@ class PedidoOut(ModelSchema):
     class Meta:
         model = Pedido
         fields = "__all__"
+
+class PlanoOut(ModelSchema):
+    class Meta:
+        model = Plano
+        fields = ["nome_plano", "valor", "data_de_pagamento"]
+
+class FaturaProdutorOut(ModelSchema):
+    plano: PlanoOut = None
+    class Meta:
+        model = Produtor
+        fields = ["id", "nomeFantasia", "documento"]
