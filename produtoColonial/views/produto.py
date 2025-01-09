@@ -77,17 +77,19 @@ class ProdutoListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         categoria_id = self.request.GET.get('c')
+        termo_pesquisa = self.request.GET.get('q')
 
         context['categorias'] = Categoria.objects.all()
 
-        print(categoria_id)
+        produto_list = Produto.objects.all()
+
+        if termo_pesquisa is not None:
+            produto_list = produto_list.filter(nome__icontains=termo_pesquisa)
 
         if categoria_id is not None:
             context['categoria_selecionada'] = Categoria.objects.get(pk=categoria_id)
-            context['produto_list'] = Produto.objects.filter(categoria=categoria_id)
-        else:
-            context['produto_list'] = Produto.objects.all()
+            produto_list = produto_list.filter(categoria=categoria_id)
 
-        print(context)
+        context['produto_list'] = produto_list
 
         return context
