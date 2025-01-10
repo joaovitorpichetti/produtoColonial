@@ -4,3 +4,4 @@ __pycache__
 *.pyc
 midia
 *.sqlite3
+.idea
