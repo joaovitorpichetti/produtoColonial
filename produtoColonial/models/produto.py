@@ -9,7 +9,7 @@ class Produto(BaseModel):
     imagem = models.ImageField(verbose_name="Imagem do produto", help_text="Inclua a imagem do produto")
     categoria = models.ManyToManyField(Categoria, verbose_name="Categoria", help_text="Selecione a ou as categorias que o produto pertence")
     descricao = models.TextField(max_length=800, verbose_name="Descrição do Produto", help_text="Esse campo é destinado para informações gerais e especificas do produto")
-    preco = models.FloatField(verbose_name="Preço", help_text="Informe o preço do produto")
+    preco = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Preço", help_text="Informe o preço do produto")
 
     class Meta:
         abstract = False

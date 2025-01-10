@@ -15,8 +15,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from . import views
+
+
+from ninja import NinjaAPI
+from ninja.security import django_auth_superuser
+from produtoColonial.router import router
+
+api = NinjaAPI()
+api.add_router(prefix="", router=router)
 
 urlpatterns = [
+    path('', views.index, name='inicio'),
+    path('aplicacao/', include('produtoColonial.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('api/', api.urls),
+
 ]
+
+#add essa parte para poder caregar as img como estou na fase de dev.
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

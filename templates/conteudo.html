@@ -1,0 +1,107 @@
+{% extends 'carrossel.html' %}
+{% load static %}
+{% block conteudo %}
+    
+
+    <!-- Barra de Filtros ARRUMAR -->
+    <div class="header-section text-center py-2 bg-light shadow-sm rounded">
+    <br>
+        <h1 class="text-success font-weight-bold display-6 mb-2">Bem-vindo ao nosso catálogo</h1>
+        <p class="text-muted small">Explore produtos incríveis para todas as ocasiões!</p>
+    </div>
+    <div class="text-center mt-3">
+    <h4 class="mb-2 text-muted">Escolha uma categoria:</h4>
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+        {% for categoria in categorias %}
+            <a href="{% url 'aplicacao:produtos_lista' %}?c={{ categoria.id }}"
+               class="btn {% if categoria.id == categoria_selecionada.id %}btn-success text-white{% else %}btn-outline-success{% endif %} px-4 py-2 rounded shadow-sm"
+               style="font-size: 1rem; font-weight: 500; border-width: 2px;">
+                {{ categoria.nome }}
+            </a>
+        {% endfor %}
+    </div>
+    </div>
+
+
+
+<!-- Seção de Destaques -->
+    <div class="container py-5">
+        <h2 class="text-center text-success mb-4">Destaques da Semana</h2>
+    
+    
+           <div class="row">
+            {% for produto in produtos %}
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="card h-100 border shadow-sm bg-beige" style="transition: transform 0.2s;">
+                    <img src="{{ produto.imagem.url }}" class="card-img-top rounded-top" alt="{{ produto.nome }}">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-success mb-2 text-truncate">{{ produto.nome }}</h5>
+                        <!-- Puxando descrição do produto -->
+                        <!-- <p class="card-text text-muted small mb-2">{{ produto.descricao }}</p> -->
+                        <!-- descrição padrão -->
+                        <p class="card-text text-muted small mb-2">Para mais informações sobre este item, clique no botão 'Ver Detalhes' abaixo.</p>
+                        <p class="card-text text-dark font-weight-bold">R$ {{ produto.preco }}</p>
+                        <div class="mt-auto text-center">
+                            <a href="{% url 'aplicacao:produto_detalhes' produto.id %}" class="btn btn-success px-3 py-2 rounded">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+   <!-- Botão Ver Catálogo Completo -->
+    <div class="text-center mt-1">
+        <a href="{% url 'aplicacao:produtos_lista' %}"
+           class="btn btn-outline-success px-4 py-2 rounded shadow-sm"
+           style="font-size: 1rem; font-weight: 500; border-width: 2px;">
+            Ver Catálogo Completo
+        </a>
+    </div>
+    <br><br>
+
+    <div class="container">
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-basket2-fill"></i></h1>
+                    <p class="card-text">Produtos artesanais, frescos e cheios de sabor, feitos com o máximo de cuidado e dedicação.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-box2-heart-fill"></i></h1>
+                    <p class="card-text">Faça seu pedido e receba produtos frescos, especialmente produzidos para você, em até 7 dias úteis.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title"><i class="bi bi-chat-left-heart-fill"></i></h1>
+                    <p class="card-text">Feito com carinho, preservando tradições e oferecendo o melhor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Seção de Sobre -->
+    <div id="sobre" class="container py-5 bg-light">
+        <h2 class="text-center text-success mb-4">Sobre Nós</h2>
+        <p class="text-center">Nossa missão é levar até você o melhor da produção colonial: produtos frescos, saudáveis e cheios de tradição. Valorizamos o trabalho artesanal e as famílias que mantêm viva a cultura do campo. Faça seu pedido e receba os produtos diretamente do produtor, preparados e enviados em até uma semana.</p>
+    </div>
+    <br>
+
+
+{% endblock %}

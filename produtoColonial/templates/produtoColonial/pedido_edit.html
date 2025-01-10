@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block conteudo %}
+     <h1>Edição do Pedido</h1>
+
+    <form action="{% url 'aplicacao:pedido_editar' pedido_id %}" method="post">
+        {% csrf_token %}
+        <div class="col-12">
+            <div class="col">
+                <div class="input-group">
+                    <span class="input-group-text">Cliente</span>
+                    <p class="form-control bordered-field">{{form.instance.cliente}}</p>
+                </div>
+            </div>
+
+            <div class="row input-group p-2">
+                <div class="col">
+                    <div class="input-group">
+                        <span class="input-group-text">Produtos</span>
+                        <p class="form-control bordered-field">{{ form.instance.produtos.all|join:", " }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-5">
+                {% render_field form.status|add_class:"form-select" %}
+            </div>
+
+
+        </div>
+
+        <div style="text-align: right">
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-floppy"></i> Salvar
+            </button>
+
+            <button type="reset" class="btn btn-danger">
+                <i class="bi bi-x-circle"></i> Repor
+            </button>
+
+            <a class="btn btn-primary" href="{% url 'aplicacao:pedidos' %}" role="button">
+                <span class="text-light text-center">
+                    <i class="bi bi-arrow-counterclockwise"></i> Voltar
+                </span>
+            </a>
+        </div>
+    </form>
+
+{% endblock %}

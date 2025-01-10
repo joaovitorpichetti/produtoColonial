@@ -1,0 +1,126 @@
+/* Estilo base */
+body {
+    background-color: #f4f9f4;
+}
+
+h1 {
+    color: #2a7a2e;
+    font-weight: bold;
+}
+
+/* Botões */
+.btn-outline-info {
+    border-color: #2a7a2e;
+    color: #2a7a2e;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-info:hover {
+    background-color: #2a7a2e;
+    color: white;
+}
+
+.btn-custom {
+    background-color: #539337;
+    color: white;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: normal;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    width: auto;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.btn-custom:hover {
+    background-color: #3e8e41;
+}
+
+/* Cartões */
+.card {
+    border: 1px solid #d1e7dd;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: #2a7a2e;
+    font-weight: 600;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Texto */
+.text-success {
+    color: #2a7a2e !important;
+}
+
+.text-secondary {
+    color: #6c757d !important;
+}
+
+/* Filtros */
+.filter-box {
+    background-color: #e8f7e8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.filter-title {
+    color: #4CAF50;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-select,
+.form-control {
+    background-color: #ffffff;
+    color: #4CAF50;
+    border: 2px solid #539337;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-select:hover,
+.custom-select:focus,
+.form-control:focus {
+    background-color: #f4f4f4;
+    border-color: #8B4513;
+}
+
+
+
+.custom-carousel-icon {
+    background-color: #28a745;
+    border-radius: 50%;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-carousel-icon:hover {
+    background-color: #218838;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+

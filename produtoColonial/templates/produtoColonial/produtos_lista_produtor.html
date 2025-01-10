@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+        {% if produtos %} <!-- produtos {vem no arquivo views}-->
+            <div class="container text-center">
+                <div class="row">
+                    <h1 class="p-3">Lista de Produtos</h1>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-success" href="{% url 'aplicacao:produto_criar' %}" role="button">
+                          <span class="text-light text-center">
+                              <i class="bi bi-plus-circle"></i> Cadastrar
+                          </span>
+                        </a>
+                    <br>
+                    </div>
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Preço</th>
+                            {% if user.produtor %}
+                            <th scope="col">Ações</th>
+                            {% endif %}
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                      {% for produto in produtos %}
+                        <tr>
+                            <td>{{ produto.nome }}</td>
+                            <td>{{ produto.categoria.all|join:", "  }}</td>
+                            <td>{{ produto.preco }}</td>
+                            {% if user.produtor %}
+                            <td>
+                                <a class="btn btn-primary" href="{% url 'aplicacao:produto_ver' produto.id %}" role="button">
+                                <span class="text-light text-center">
+                                    <i class="bi bi-eye-fill"></i>
+                                </span>
+
+                                </a>
+
+                                <a class="btn btn-warning" href="{% url 'aplicacao:produto_atualizar' produto.id %}" role="button">
+                                    <span class="text-light text-center">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </span>
+                                </a>
+
+                                <a class="btn btn-danger" href="{% url 'aplicacao:produto_excluir' produto.id %}" role="button">
+                                    <span class="text-light text-center">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        {% endif %}
+                        </tr>
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+            {% else %}
+            <div class="container text-center">
+                <div class="col">
+                    <br>
+                    <h2>Não foi encontrado produtos cadastrados</h2>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-cet">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-edn">
+                        <a class="btn btn-success" href="{% url 'aplicacao:produto_criar' %}" role="button">
+                            <span class="text-light text-center">
+                                <i class="bi bi-plus-circle"></i> Cadastrar Produto
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+                </div>
+            </div>
+{% endblock %}
