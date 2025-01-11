@@ -70,19 +70,7 @@ Siga os passos abaixo para configurar e executar o projeto localmente:
    python manage.py runserver
    ```
    Este comando inicia o servidor local do Django. Você pode acessar o sistema pelo navegador no endereço: [http://127.0.0.1:8000](http://127.0.0.1:8000).
-
----
-
-## Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests com melhorias, correções ou novas funcionalidades.
-
----
-
-## Licença
-
-Este projeto está licenciado sob a licença [MIT](LICENSE). Consulte o arquivo LICENSE para mais detalhes.
-
+   
 ---
 
 Se precisar de ajuda ou tiver dúvidas, entre em contato com o mantenedor do projeto.
