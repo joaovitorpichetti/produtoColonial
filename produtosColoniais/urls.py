@@ -28,7 +28,7 @@ api.add_router(prefix="", router=router)
 
 urlpatterns = [
     path('', views.index, name='inicio'),
-    path('aplicacao/', include('produtoColonial.urls')),
+    path('', include('produtoColonial.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('api/', api.urls),
