@@ -6,3 +6,4 @@ midia
 *.sqlite3
 .idea
 .env
+.env.prod
