@@ -11,21 +11,31 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os.path
 from pathlib import Path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+env = environ.Env(
+    DEBUG = (bool, False),
+    ALLOWED_HOSTS = (list, ["*"]),
+    USE_AWS = (bool, False),
+)
+
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xvx&$4tknq^%q4ji&b*x-^tgthhrc_f-(9v4)2+3e-v%fvwlm+'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -77,10 +87,7 @@ WSGI_APPLICATION = 'produtosColoniais.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(),
 }
 
 
@@ -124,8 +131,30 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ] #essa parte é pq estamos no modo deve para ele idenficar os arquivos no PC
 
-MEDIA_URL = '/midia/'
-MEDIA_ROOT = BASE_DIR / 'midia'
+if DEBUG and not env('USE_AWS'):
+    MEDIA_URL = '/midia/'
+    MEDIA_ROOT = BASE_DIR / 'midia'
+else:
+    STORAGES = {
+        'default': {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "access_key": env('AWS_ACCESS_KEY_ID'),
+                "secret_key": env('AWS_SECRET_ACCESS_KEY'),
+                "bucket_name": env('AWS_STORAGE_BUCKET_NAME'),
+                "region_name": env('AWS_S3_REGION_NAME'),
+            }
+        },
+        "staticfiles": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "access_key": env('AWS_ACCESS_KEY_ID'),
+                "secret_key": env('AWS_SECRET_ACCESS_KEY'),
+                "bucket_name": env('AWS_STORAGE_BUCKET_NAME'),
+                "region_name": env('AWS_S3_REGION_NAME'),
+            }
+        }
+    }
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -150,10 +179,10 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Portal Admin",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "/img/Logo2.png",
+    "site_logo": "/img/Logo2.webp",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "/img/Logo3Menor2.png",
+    "login_logo": "/img/Logo3Menor2.webp",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
     "login_logo_dark": None,
@@ -191,7 +220,7 @@ JAZZMIN_SETTINGS = {
         #{"model": "auth.User"}, #aqui aparece um botão para ver os usuario
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "books"},
+        # {"app": "books"},
     ],
 
 
@@ -212,17 +241,17 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
-    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+    # "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
 
     # Custom links to append to app groups, keyed on app name
-    "custom_links": {
-        "books": [{
-            "name": "Make Messages",
-            "url": "make_messages",
-            "icon": "fas fa-comments",
-            "permissions": ["books.view_book"]
-        }]
-    },
+    # "custom_links": {
+    #     "books": [{
+    #         "name": "Make Messages",
+    #         "url": "make_messages",
+    #         "icon": "fas fa-comments",
+    #         "permissions": ["books.view_book"]
+    #     }]
+    # },
 
     # Custom icons for side menu apps/models See https://fontawesome.com/icons?d=gallery&m=free&v=5.0.0,5.0.1,5.0.10,5.0.11,5.0.12,5.0.13,5.0.2,5.0.3,5.0.4,5.0.5,5.0.6,5.0.7,5.0.8,5.0.9,5.1.0,5.1.1,5.2.0,5.3.0,5.3.1,5.4.0,5.4.1,5.4.2,5.13.0,5.12.0,5.11.2,5.11.1,5.10.0,5.9.0,5.8.2,5.8.1,5.7.2,5.7.1,5.7.0,5.6.3,5.5.0,5.4.2
     # for the full list of 5.13.0 free icon classes
